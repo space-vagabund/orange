@@ -1,6 +1,6 @@
 <template>
   <div>
-    login page
+    <h1 class="title">login page</h1>
   </div>
 </template>
 
@@ -17,3 +17,9 @@ export default defineComponent({
 })
 </script>
 
+<style lang="scss" scoped>
+  .title {
+    color: red;
+    font-size: 54px;
+  }
+</style>
