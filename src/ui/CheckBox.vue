@@ -16,16 +16,16 @@ export default defineComponent({
 <style lang="scss" scoped>
 label {
   display: block;
-  width: 50px;
-  height: 50px;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
   input {
     position: absolute;
     transform: scale(0);
     &:checked ~ .checkbox {
       transform: rotate(45deg);
-      width: 20px;
-      margin-left: 16px;
+      width: 15px;
+      margin-left: 10px;
       border-color: #24c78e;
       border-top-color: transparent;
       border-left-color: transparent;
