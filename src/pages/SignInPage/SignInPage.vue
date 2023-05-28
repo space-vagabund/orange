@@ -1,6 +1,6 @@
 <template>
   <div class="signInPage">
-    <PageBanner :page="'login'" />
+    <PageBanner :page="'createAccount'" />
     <div class="signInBlock">
       <SignInForm />
       <div class="bottomLinkContainer">

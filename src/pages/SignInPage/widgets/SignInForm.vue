@@ -9,12 +9,7 @@
           required
           clearable
         />
-        <v-text-field
-          label="password"
-          variant="underlined"
-          required
-          clearable
-        />
+        <PasswordInput />
         <div class="wrapperControls">
           <v-btn size="large" type="submit">Sign In</v-btn>
           <div class="rememberCheckbox">
@@ -29,12 +24,13 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { CheckBox } from "@/ui";
+import { CheckBox, PasswordInput } from "@/ui";
 
 export default defineComponent({
   name: "login-form",
   components: {
     CheckBox,
+    PasswordInput,
   },
   data() {
     return {

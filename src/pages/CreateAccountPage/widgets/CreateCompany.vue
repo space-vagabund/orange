@@ -7,21 +7,19 @@
       required
       clearable
     />
-    <v-text-field
-      label="Company password"
-      variant="underlined"
-      required
-      clearable
-      type="password"
-    />
+    <PasswordInput />
   </v-card>
 </template>
 
 <script lang="ts">
+import { PasswordInput } from "@/ui";
 import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "create-company-form",
+  components: {
+    PasswordInput,
+  },
 });
 </script>
 
