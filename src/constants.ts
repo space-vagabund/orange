@@ -1,6 +1,7 @@
 export const APP_ROUTERS = {
-    LOGIN: '/login',
-    DASHBOARD: '/dashboard'
+    SIGN_IN: '/sign-in',
+    DASHBOARD: '/dashboard',
+    CREATE_ACCOUNT: '/create-account',
 }
 
 export const LOCAL_STORAGE_KEYS = {

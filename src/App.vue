@@ -14,7 +14,7 @@ export default defineComponent({
     );
 
     if (!userSessionIsActive) {
-      this.$router.push(APP_ROUTERS.LOGIN);
+      this.$router.push(APP_ROUTERS.SIGN_IN);
     } else {
       this.$router.push(APP_ROUTERS.DASHBOARD);
     }
