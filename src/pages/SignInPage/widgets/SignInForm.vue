@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <v-card width="346" class="mx-auto signInFormWrapper">
+    <v-card width="346" class="mx-auto signInFormWrapper widgetContainer">
       <v-form @submit.prevent="onSubmit">
         <h1>Sign in</h1>
         <v-text-field
@@ -48,15 +48,13 @@ export default defineComponent({
 <style lang="scss">
 .container {
   .signInFormWrapper {
-    padding: 16px;
+    padding: 32px 16px;
   }
 }
 .signInFormWrapper {
-  padding: 20px h1 {
-    font-size: 65px;
-    display: inline-block;
-    margin-bottom: 24px;
-    color: #325279;
+  padding: 20px;
+  h1 {
+    margin-bottom: 16px;
   }
   .wrapperControls {
     display: flex;

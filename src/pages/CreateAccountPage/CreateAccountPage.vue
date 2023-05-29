@@ -44,6 +44,7 @@ export default defineComponent({
     padding-right: 16px;
     display: flex;
     justify-content: center;
+    position: relative;
   }
   .createUserWrapper {
     margin-top: 32px;

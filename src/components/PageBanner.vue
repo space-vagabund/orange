@@ -2,7 +2,15 @@
   <transition name="bannerShow">
     <div class="bannerBlock" v-if="startAnimation">
       <div class="wrapperImage">
-        <img :src="getImageScr" alt="banner" />
+        <div
+          class="goBackWrapper"
+          @click="goToSignInPage"
+          v-if="page === 'createAccount'"
+        >
+          <BackBtn />
+        </div>
+        <img src="../assets/create_account_banner.jpg" alt="banner" />
+        <h1>Paragraph</h1>
       </div>
       <div class="blocks">
         <div class="block block1" />
@@ -16,9 +24,13 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import type { PropType } from "vue";
+import { BackBtn } from "@/ui";
 
 export default defineComponent({
   name: "LoginBanner",
+  components: {
+    BackBtn,
+  },
   props: {
     page: {
       required: true,
@@ -30,11 +42,9 @@ export default defineComponent({
       startAnimation: false,
     };
   },
-  computed: {
-    getImageScr() {
-      return require(this.page === "login"
-        ? "../assets/banner_login.jpg"
-        : "../assets/create_account_banner.jpg");
+  methods: {
+    goToSignInPage() {
+      this.$router.back();
     },
   },
   mounted() {
@@ -48,6 +58,22 @@ export default defineComponent({
   flex-basis: 60%;
   height: 100vh;
   position: relative;
+  .goBackWrapper {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    z-index: 9999;
+    cursor: pointer;
+  }
+  h1 {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    font-size: 120px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: default;
+  }
   .wrapperImage {
     width: 100%;
     height: 100%;
