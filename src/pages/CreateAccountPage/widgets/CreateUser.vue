@@ -1,19 +1,20 @@
 <template>
   <v-card width="346" class="mx-auto createUser">
-    <h1>{{ title }}</h1>
-    <v-text-field label="username" variant="underlined" required clearable />
+    <WidgetTitle :value="title" />
+    <v-text-field label="Username" variant="underlined" required clearable />
     <PasswordInput />
   </v-card>
 </template>
 
 <script lang="ts">
-import { PasswordInput } from "@/ui";
+import { PasswordInput, WidgetTitle } from "@/ui";
 import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "create-user-form",
   components: {
     PasswordInput,
+    WidgetTitle,
   },
   props: {
     title: {

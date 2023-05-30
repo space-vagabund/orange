@@ -1,7 +1,7 @@
 <template>
   <div class="wrapperPasswordInput">
     <v-text-field
-      label="password"
+      label="Password"
       variant="underlined"
       required
       clearable

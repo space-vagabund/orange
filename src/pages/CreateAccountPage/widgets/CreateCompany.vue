@@ -1,6 +1,6 @@
 <template>
   <v-card width="346" class="mx-auto createCompany">
-    <h1>Create Company</h1>
+    <WidgetTitle value="Create Company" />
     <v-text-field
       label="Company name"
       variant="underlined"
@@ -12,13 +12,14 @@
 </template>
 
 <script lang="ts">
-import { PasswordInput } from "@/ui";
+import { PasswordInput, WidgetTitle } from "@/ui";
 import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "create-company-form",
   components: {
     PasswordInput,
+    WidgetTitle,
   },
 });
 </script>

@@ -30,8 +30,7 @@ export default defineComponent({
 }
 h1,
 h2,
-h3,
-.title {
+h3 {
   font-family: "Kaushan Script", "Raleway", sans-serif;
   color: #1a1109;
 }

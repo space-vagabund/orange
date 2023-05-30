@@ -2,7 +2,7 @@
   <div class="container">
     <v-card width="346" class="mx-auto signInFormWrapper widgetContainer">
       <v-form @submit.prevent="onSubmit">
-        <h1>Sign in</h1>
+        <WidgetTitle value="Sign in" />
         <v-text-field
           label="Username"
           variant="underlined"
@@ -10,6 +10,9 @@
           clearable
         />
         <PasswordInput />
+        <RouterLink :to="pathToForgotPasswordPage" class="toForgotPasswordPage">
+          Forgot password
+        </RouterLink>
         <div class="wrapperControls">
           <v-btn size="large" type="submit">Sign In</v-btn>
           <div class="rememberCheckbox">
@@ -24,17 +27,20 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { CheckBox, PasswordInput } from "@/ui";
+import { CheckBox, PasswordInput, WidgetTitle } from "@/ui";
+import { APP_ROUTERS } from "@/constants";
 
 export default defineComponent({
   name: "login-form",
   components: {
     CheckBox,
     PasswordInput,
+    WidgetTitle,
   },
   data() {
     return {
       needSaveData: false,
+      pathToForgotPasswordPage: APP_ROUTERS.FORGOT_PASSWORD,
     };
   },
   methods: {
@@ -56,11 +62,17 @@ export default defineComponent({
   h1 {
     margin-bottom: 16px;
   }
+  .toForgotPasswordPage {
+    color: #325279;
+    margin: 12px 0;
+    text-decoration: none;
+  }
   .wrapperControls {
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    margin-top: 32px;
     .rememberCheckbox {
       display: flex;
       align-items: center;

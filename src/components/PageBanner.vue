@@ -5,7 +5,7 @@
         <div
           class="goBackWrapper"
           @click="goToSignInPage"
-          v-if="page === 'createAccount'"
+          v-if="page !== 'login'"
         >
           <BackBtn />
         </div>

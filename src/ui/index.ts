@@ -1,9 +1,11 @@
 import CheckBox from './CheckBox.vue'
 import PasswordInput from './PasswordInput.vue';
 import BackBtn from './BackBtn.vue';
+import WidgetTitle from './WidgetTitle.vue';
 
 export {
     CheckBox,
     PasswordInput,
-    BackBtn
+    BackBtn,
+    WidgetTitle
 }
