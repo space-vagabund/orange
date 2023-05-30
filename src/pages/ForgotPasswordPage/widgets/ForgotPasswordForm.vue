@@ -10,20 +10,23 @@
       <TextField label="Username" />
       <TextField label="New password" />
       <TextField label="Repeat new password" />
-      <v-btn class="formSubmitBtn"> Save </v-btn>
+      <div class="formSubmitBtn">
+        <ButtonComponent title="Save" size="large" />
+      </div>
     </v-form>
   </v-card>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { WidgetTitle, TextField } from "@/ui";
+import { WidgetTitle, TextField, ButtonComponent } from "@/ui";
 
 export default defineComponent({
   name: "forgot-password-form",
   components: {
     WidgetTitle,
     TextField,
+    ButtonComponent,
   },
 });
 </script>

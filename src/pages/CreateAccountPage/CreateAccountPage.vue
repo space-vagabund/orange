@@ -1,14 +1,14 @@
 <template>
   <div class="createAccountPage">
     <PageBanner :page="'createAccount'" />
-    <div class="createAccountBlock">
+    <div class="contentBlock">
       <v-form>
         <v-card max-width="444" class="formCard widgetContainer">
           <CreateCompany />
           <div class="createUserWrapper">
             <CreateUser :title="'Company admin'" />
           </div>
-          <v-btn class="formSubmitBtn"> Create Company </v-btn>
+          <ButtonComponent size="default" title="Create company" />
         </v-card>
       </v-form>
     </div>
@@ -19,6 +19,7 @@
 import { PageBanner } from "@/components";
 import { defineComponent, PropType } from "vue";
 import { CreateCompany, CreateUser } from "./widgets";
+import { ButtonComponent } from "@/ui";
 
 export default defineComponent({
   name: "create-account-page",
@@ -26,6 +27,7 @@ export default defineComponent({
     PageBanner,
     CreateCompany,
     CreateUser,
+    ButtonComponent,
   },
   props: {
     page: String as PropType<"login" | "createAccount">,
@@ -38,7 +40,7 @@ export default defineComponent({
   min-height: 100vh;
   display: flex;
   align-items: center;
-  .createAccountBlock {
+  .contentBlock {
     flex-basis: 40%;
     padding-left: 16px;
     padding-right: 16px;
@@ -48,14 +50,12 @@ export default defineComponent({
   }
   .createUserWrapper {
     margin-top: 32px;
+    margin-bottom: 24px;
   }
   .formCard {
     display: flex;
     flex-direction: column;
     align-items: center;
-    .formSubmitBtn {
-      margin-top: 32px;
-    }
   }
 }
 </style>

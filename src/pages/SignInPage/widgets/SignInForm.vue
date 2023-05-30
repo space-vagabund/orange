@@ -14,7 +14,7 @@
           Forgot password
         </RouterLink>
         <div class="wrapperControls">
-          <v-btn size="large" type="submit">Sign In</v-btn>
+          <ButtonComponent title="Sign in" size="large" />
           <div class="rememberCheckbox">
             Remember me
             <CheckBox />
@@ -27,7 +27,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { CheckBox, PasswordInput, WidgetTitle } from "@/ui";
+import { CheckBox, PasswordInput, WidgetTitle, ButtonComponent } from "@/ui";
 import { APP_ROUTERS } from "@/constants";
 
 export default defineComponent({
@@ -36,6 +36,7 @@ export default defineComponent({
     CheckBox,
     PasswordInput,
     WidgetTitle,
+    ButtonComponent,
   },
   data() {
     return {
