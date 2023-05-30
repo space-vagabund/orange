@@ -1,13 +1,13 @@
 <template>
-  <v-card width="346" class="mx-auto createUser">
+  <v-card width="346" class="mx-auto createUser widget">
     <WidgetTitle :value="title" />
-    <v-text-field label="Username" variant="underlined" required clearable />
+    <TextField label="Username" />
     <PasswordInput />
   </v-card>
 </template>
 
 <script lang="ts">
-import { PasswordInput, WidgetTitle } from "@/ui";
+import { PasswordInput, WidgetTitle, TextField } from "@/ui";
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -15,6 +15,7 @@ export default defineComponent({
   components: {
     PasswordInput,
     WidgetTitle,
+    TextField,
   },
   props: {
     title: {
@@ -31,14 +32,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
-.createUser {
-  padding: 16px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
-    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
-    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-  h1 {
-    margin-bottom: 8px;
-  }
-}
-</style>
+<style lang="scss" scoped></style>
