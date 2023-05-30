@@ -1,8 +1,5 @@
 <template>
-  <v-card
-    width="346"
-    class="mx-auto forgotPasswordFormContainer widgetContainer"
-  >
+  <v-card width="346" class="mx-auto forgotPasswordFormContainer widget">
     <v-form class="formCard">
       <div class="wrapperTitle">
         <WidgetTitle value="Forgot Password" />

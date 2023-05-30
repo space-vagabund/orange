@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <v-card width="346" class="mx-auto signInFormWrapper widgetContainer">
+    <v-card width="346" class="mx-auto signInFormWrapper widget">
       <v-form @submit.prevent="onSubmit">
         <WidgetTitle value="Sign in" />
         <v-text-field
