@@ -9,8 +9,7 @@
         >
           <BackBtn />
         </div>
-        <img src="../assets/create_account_banner.jpg" alt="banner" />
-        <h1>Paragraph</h1>
+        <h1>Orange</h1>
       </div>
       <div class="blocks">
         <div class="block block1" />
@@ -58,6 +57,13 @@ export default defineComponent({
   flex-basis: 60%;
   height: 100vh;
   position: relative;
+  background: rgb(119, 44, 4);
+  background: linear-gradient(
+    90deg,
+    rgba(119, 44, 4, 1) 0%,
+    rgba(246, 119, 0, 1) 31%,
+    rgba(248, 245, 243, 1) 100%
+  );
   .goBackWrapper {
     position: absolute;
     top: 5%;
