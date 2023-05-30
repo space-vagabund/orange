@@ -122,57 +122,73 @@ export default defineComponent({
       position: absolute;
       right: -130px;
       top: 10%;
-      animation: block1 3s linear infinite;
+      animation: block1 9s linear infinite;
     }
     .block2 {
       position: absolute;
       right: 70px;
       top: 37.5%;
       background-color: transparent;
-      animation: block2 3s linear infinite;
+      animation: block2 7.5s linear infinite;
     }
     .block3 {
       position: absolute;
       right: -130px;
-      top: 64.5%;
+      top: 60%;
       background-color: transparent;
-      animation: block3 3s linear infinite;
+      animation: block3 5s linear infinite;
     }
   }
 
   @keyframes block1 {
     0% {
-      top: 8%;
+      top: 5%;
+      opacity: 0;
     }
     50% {
-      top: 10%;
+      top: 15%;
+      transform: scale(0.5);
+      opacity: 1;
     }
     100% {
-      top: 8%;
+      top: 5%;
+      opacity: 0;
     }
   }
 
   @keyframes block2 {
     0% {
       right: 70px;
+      transform: scale(0.5);
+      opacity: 0;
     }
     50% {
-      right: 100px;
+      right: 150px;
+      transform: scale(1.2);
+      opacity: 1;
     }
     100% {
       right: 70px;
+      transform: scale(0.5);
+      opacity: 0;
     }
   }
 
   @keyframes block3 {
     0% {
-      top: 66%;
+      top: 55%;
+      transform: scale(1);
+      opacity: 1;
     }
     50% {
-      top: 63%;
+      top: 45%;
+      transform: scale(0.5);
+      opacity: 0;
     }
     100% {
-      top: 66%;
+      top: 55%;
+      transform: scale(1);
+      opacity: 1;
     }
   }
 }
