@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { APP_ROUTERS, LOCAL_STORAGE_KEYS } from "./constants";
+import { APP_ROUTERS, LOCAL_STORAGE_KEYS } from "../constants";
 
 export default defineComponent({
   name: "App",

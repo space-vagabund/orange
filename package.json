@@ -16,7 +16,8 @@
     "material-icons": "^1.13.7",
     "vue": "^3.2.13",
     "vue-router": "^4.2.1",
-    "vuetify": "^3.3.0"
+    "vuetify": "^3.3.0",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

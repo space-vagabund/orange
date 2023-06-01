@@ -1,5 +1,7 @@
 <template>
-  <v-btn :size="size" class="submitBtn" rounded="xs">{{ title }}</v-btn>
+  <v-btn :size="size" @click="onClick" class="submitBtn" rounded="xs">
+    {{ title }}
+  </v-btn>
 </template>
 
 <script lang="ts">
@@ -15,6 +17,10 @@ export default defineComponent({
     size: {
       type: String,
       required: true,
+    },
+    onClick: {
+      type: Function,
+      required: false,
     },
   },
 });

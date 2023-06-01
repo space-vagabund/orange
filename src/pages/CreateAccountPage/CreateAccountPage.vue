@@ -8,7 +8,11 @@
           <div class="createUserWrapper">
             <CreateUser :title="'Company admin'" />
           </div>
-          <ButtonComponent size="default" title="Create company" />
+          <ButtonComponent
+            :onClick="onClick"
+            size="default"
+            title="Create company"
+          />
         </v-card>
       </v-form>
     </div>
@@ -16,9 +20,9 @@
 </template>
 
 <script lang="ts">
-import { PageBanner } from "@/components";
 import { defineComponent, PropType } from "vue";
 import { CreateCompany, CreateUser } from "./widgets";
+import { PageBanner } from "@/components";
 import { ButtonComponent } from "@/ui";
 
 export default defineComponent({
@@ -31,6 +35,11 @@ export default defineComponent({
   },
   props: {
     page: String as PropType<"login" | "createAccount">,
+  },
+  methods: {
+    onClick() {
+      this.$store.dispatch("createAccountPage/submitUserData");
+    },
   },
 });
 </script>

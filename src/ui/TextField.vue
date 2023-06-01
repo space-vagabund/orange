@@ -1,6 +1,8 @@
 <template>
   <v-text-field
     :label="label"
+    :value="value"
+    @input="handleChange"
     class="textField"
     variant="underlined"
     required
@@ -8,8 +10,9 @@
   />
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
+import type { PropType } from "vue";
 
 export default defineComponent({
   name: "text-field",
@@ -22,9 +25,30 @@ export default defineComponent({
       type: String,
       required: false,
     },
+    value: {
+      type: String,
+      required: false,
+    },
+    onChange: {
+      type: Function,
+      required: false,
+    },
+    keyValue: {
+      type: String as PropType<
+        "username" | "password" | "companyName" | "companyPassword"
+      >,
+      required: true,
+    },
   },
   data() {
     return {};
+  },
+  methods: {
+    handleChange({ data }: any) {
+      if (this.onChange) {
+        this.onChange({ value: data, key: this.keyValue });
+      }
+    },
   },
 });
 </script>

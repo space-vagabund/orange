@@ -1,11 +1,13 @@
 <template>
   <div class="wrapperPasswordInput">
     <v-text-field
+      :value="value"
+      @input="handleChange"
+      :type="type"
       label="Password"
       variant="underlined"
       required
       clearable
-      :type="type"
     />
     <span class="inputIcon material-icons-outlined" @click="toggleInputType">
       remove_red_eye
@@ -14,10 +16,24 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { PropType, defineComponent } from "vue";
 
 export default defineComponent({
   name: "password-input",
+  props: {
+    value: {
+      type: String,
+      required: false,
+    },
+    onChange: {
+      type: Function,
+      required: false,
+    },
+    keyValue: {
+      type: String as PropType<"password" | "companyPassword">,
+      required: true,
+    },
+  },
   data() {
     return {
       type: "password" as "password" | "default",
@@ -26,6 +42,11 @@ export default defineComponent({
   methods: {
     toggleInputType() {
       this.type = this.type === "password" ? "default" : "password";
+    },
+    handleChange({ data }: any) {
+      if (this.onChange) {
+        this.onChange({ value: data, key: this.keyValue });
+      }
     },
   },
 });
