@@ -12,7 +12,6 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import type { PropType } from "vue";
 
 export default defineComponent({
   name: "text-field",
@@ -33,12 +32,6 @@ export default defineComponent({
       type: Function,
       required: false,
     },
-    keyValue: {
-      type: String as PropType<
-        "username" | "password" | "companyName" | "companyPassword"
-      >,
-      required: true,
-    },
   },
   data() {
     return {};
@@ -46,7 +39,7 @@ export default defineComponent({
   methods: {
     handleChange({ data }: any) {
       if (this.onChange) {
-        this.onChange({ value: data, key: this.keyValue });
+        this.onChange(data);
       }
     },
   },

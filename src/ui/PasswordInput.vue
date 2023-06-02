@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import { PropType, defineComponent } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "password-input",
@@ -28,10 +28,6 @@ export default defineComponent({
     onChange: {
       type: Function,
       required: false,
-    },
-    keyValue: {
-      type: String as PropType<"password" | "companyPassword">,
-      required: true,
     },
   },
   data() {
@@ -45,7 +41,7 @@ export default defineComponent({
     },
     handleChange({ data }: any) {
       if (this.onChange) {
-        this.onChange({ value: data, key: this.keyValue });
+        this.onChange(data);
       }
     },
   },

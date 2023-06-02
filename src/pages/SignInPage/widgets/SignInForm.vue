@@ -3,18 +3,22 @@
     <v-card width="346" class="mx-auto signInFormWrapper widget">
       <v-form @submit.prevent="onSubmit">
         <WidgetTitle value="Sign in" />
-        <v-text-field
+        <TextField
+          :value="username"
+          :onChange="onUsernameChange"
+          :keyValue="'username'"
           label="Username"
-          variant="underlined"
-          required
-          clearable
         />
-        <PasswordInput />
+        <PasswordInput
+          :keyValue="'password'"
+          :value="password"
+          :onChange="onPasswordChange"
+        />
         <RouterLink :to="pathToForgotPasswordPage" class="toForgotPasswordPage">
           Forgot password
         </RouterLink>
         <div class="wrapperControls">
-          <ButtonComponent title="Sign in" size="large" />
+          <ButtonComponent title="Sign in" size="large" :onClick="onSubmit" />
           <div class="rememberCheckbox">
             Remember me
             <CheckBox />
@@ -27,8 +31,15 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { CheckBox, PasswordInput, WidgetTitle, ButtonComponent } from "@/ui";
+import {
+  CheckBox,
+  PasswordInput,
+  WidgetTitle,
+  ButtonComponent,
+  TextField,
+} from "@/ui";
 import { APP_ROUTERS } from "@/constants";
+import { mapGetters } from "vuex";
 
 export default defineComponent({
   name: "login-form",
@@ -37,6 +48,7 @@ export default defineComponent({
     PasswordInput,
     WidgetTitle,
     ButtonComponent,
+    TextField,
   },
   data() {
     return {
@@ -46,8 +58,21 @@ export default defineComponent({
   },
   methods: {
     onSubmit() {
-      console.log("submit");
+      this.$store.dispatch("signInPage/submitUserData");
     },
+    onUsernameChange(value: string) {
+      this.$store.commit("signInPage/setFormValue", { key: "username", value });
+    },
+    onPasswordChange(value: string) {
+      //console.log({ key: "password", value });
+      this.$store.commit("signInPage/setFormValue", { key: "password", value });
+    },
+  },
+  computed: {
+    ...mapGetters({
+      username: "signInPage/getUsername",
+      password: "signInPage/getPassword",
+    }),
   },
 });
 </script>
