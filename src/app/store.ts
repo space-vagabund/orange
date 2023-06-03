@@ -8,10 +8,15 @@ import {
   ModuleStateType as SignInPageModuleStateType, 
   module as signInPage 
 } from '@/pages/SignInPage';
+import { 
+  ModuleStateType as ForgotPasswordPageModuleStateType, 
+  module as forgotPasswordPage 
+} from '@/pages/ForgotPasswordPage';
  
 export interface RootStateType {
   createAccountPage: CreateAccountPageModuleStateType
-  signInPage: SignInPageModuleStateType
+  signInPage: SignInPageModuleStateType,
+  forgotPasswordPage: ForgotPasswordPageModuleStateType
 }
 
 export const key: InjectionKey<Store<RootStateType>> = Symbol();
@@ -19,6 +24,7 @@ export const key: InjectionKey<Store<RootStateType>> = Symbol();
 export default createStore<RootStateType>({
   modules: {
     createAccountPage,
-    signInPage
+    signInPage,
+    forgotPasswordPage
   }
 })

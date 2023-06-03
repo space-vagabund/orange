@@ -13,6 +13,11 @@ declare module '@vue/runtime-core' {
     signInPage: {
       username: string,
       password: string,
+    },
+    forgotPasswordPage: {
+      username: string,
+      newPassword: string,
+      confirmPassword: string,
     }
   }
   // provide typings for `this.$store`
