@@ -3,15 +3,10 @@
     <WidgetTitle value="Create Company" />
     <TextField
       :value="companyName"
-      :onChange="onChange"
-      :keyValue="'companyName'"
+      :onChange="onCompanyNameChange"
       label="Company name"
     />
-    <PasswordInput
-      :value="companyPassword"
-      :keyValue="'companyPassword'"
-      :onChange="onChange"
-    />
+    <PasswordInput :value="companyPassword" :onChange="onPasswordChange" />
   </v-card>
 </template>
 
@@ -19,11 +14,6 @@
 import { PasswordInput, WidgetTitle, TextField } from "@/ui";
 import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
-
-type onChangePropsType = {
-  key: "companyName" | "companyPassword";
-  value: string;
-};
 
 export default defineComponent({
   name: "create-company-form",
@@ -33,8 +23,17 @@ export default defineComponent({
     TextField,
   },
   methods: {
-    onChange(props: onChangePropsType) {
-      this.$store.commit("createAccountPage/setFormValue", props);
+    onCompanyNameChange(value: string) {
+      this.$store.commit("createAccountPage/setFormValue", {
+        key: "companyName",
+        value,
+      });
+    },
+    onPasswordChange(value: string) {
+      this.$store.commit("createAccountPage/setFormValue", {
+        key: "companyPassword",
+        value,
+      });
     },
   },
   computed: {

@@ -24,6 +24,7 @@ import { defineComponent, PropType } from "vue";
 import { CreateCompany, CreateUser } from "./widgets";
 import { PageBanner } from "@/components";
 import { ButtonComponent } from "@/ui";
+import { APP_ROUTERS } from "@/constants";
 
 export default defineComponent({
   name: "create-account-page",
@@ -38,7 +39,16 @@ export default defineComponent({
   },
   methods: {
     onClick() {
-      this.$store.dispatch("createAccountPage/submitUserData");
+      this.$store
+        .dispatch("createAccountPage/submitUserData")
+        .then((response) => {
+          if (response.error) {
+            console.log("CREATE ACCOUNT ERROR", response);
+          } else {
+            this.$store.commit("createAccountPage/clearFormFields");
+            this.$router.push(APP_ROUTERS.SIGN_IN);
+          }
+        });
     },
   },
 });

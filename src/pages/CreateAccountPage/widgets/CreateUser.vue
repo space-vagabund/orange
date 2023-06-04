@@ -3,15 +3,10 @@
     <WidgetTitle :value="title" />
     <TextField
       :value="username"
-      :onChange="onChange"
-      :keyValue="'username'"
+      :onChange="onUsernameChange"
       label="Username"
     />
-    <PasswordInput
-      :value="userPassword"
-      :keyValue="'password'"
-      :onChange="onChange"
-    />
+    <PasswordInput :value="userPassword" :onChange="onPasswordChange" />
   </v-card>
 </template>
 
@@ -19,11 +14,6 @@
 import { PasswordInput, WidgetTitle, TextField } from "@/ui";
 import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
-
-type onChangePropsType = {
-  key: "username" | "password";
-  value: string;
-};
 
 export default defineComponent({
   name: "create-user-form",
@@ -42,8 +32,17 @@ export default defineComponent({
     return {};
   },
   methods: {
-    onChange(props: onChangePropsType) {
-      this.$store.commit("createAccountPage/setFormValue", props);
+    onUsernameChange(value: string) {
+      this.$store.commit("createAccountPage/setFormValue", {
+        key: "username",
+        value,
+      });
+    },
+    onPasswordChange(value: string) {
+      this.$store.commit("createAccountPage/setFormValue", {
+        key: "password",
+        value,
+      });
     },
   },
   computed: {

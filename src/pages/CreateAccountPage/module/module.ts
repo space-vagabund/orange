@@ -1,6 +1,7 @@
 import { Module } from "vuex";
 import { ModuleStateType, setFormValuePayloadType } from "./types";
 import { RootStateType } from "@/app/store";
+import CreateAccountApi from "../api";
 
 const state: ModuleStateType = {
     username: '',
@@ -25,10 +26,12 @@ const module: Module<ModuleStateType, RootStateType> = {
     },
     actions: {
         submitUserData({ commit, state, rootState }){
-            return new Promise((resolve, reject) => {
-                console.log('SUCCESS');
-                resolve(true);
-                commit('clearFormFields');
+            const createAccountService = new CreateAccountApi();
+            return createAccountService.createCompanyAndAdmin({
+                companyName: state.companyName,
+                companyPassword: state.companyPassword,
+                username: state.username,
+                userPassword: state.password
             })
         }
     },

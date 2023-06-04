@@ -1,19 +1,20 @@
 {
-  "posts": [
+  "users": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "role": "OWNER",
+      "username": "FAWEFA",
+      "password": "CXXZSFVSE",
+      "id": "user_1685865853242"
     }
   ],
-  "comments": [
+  "companies": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "companyName": "sMATRTAOO",
+      "companyPassword": "SFSDFVSDZ",
+      "id": "company_1685865853321",
+      "members": [
+        "user_1685865853242"
+      ]
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
