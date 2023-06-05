@@ -1,15 +1,13 @@
 import axios from "axios";
 import { createCompanyAndAdminProps, createCompanyProps, createUserProps } from "./types";
-import { COMPANY_ROLES } from "@/constants";
+import { BASE_URL } from "@/constants";
 
 class CreateAccountApi {
-    readonly BASE_URL = 'http://localhost:3000';
+    readonly BASE_URL = BASE_URL;
     readonly END_POINTS = {
         USERS: '/users',
         COMPANIES: '/companies'
     }
-    private userId = '';
-    private companyId = '';
 
     constructor(){}
     
@@ -92,13 +90,15 @@ class CreateAccountApi {
 
     private async checkUserExits(password: string){
         const response = await axios.get(`${this.BASE_URL}${this.END_POINTS.USERS}?password=${password}`)
+        console.log('checkUserExits', response)
         return !!response.data.length
     }
 
     private async checkCompanyExits(companyPassword: string){
         const response = await axios.get(
-            `${this.BASE_URL}${this.END_POINTS.COMPANIES}?companyPassword=${companyPassword}
+            `${this.BASE_URL}${this.END_POINTS.COMPANIES}?id=${companyPassword}
         `);
+        console.log('checkCompanyExits', response)
         return !!response.data.length
     }
 }

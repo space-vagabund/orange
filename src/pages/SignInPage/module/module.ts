@@ -1,6 +1,7 @@
 import { Module } from "vuex";
 import { ModuleStateType, setFormValuePayloadType } from "./types";
 import { RootStateType } from "@/app/store";
+import LoginApi from "../api";
 
 const state: ModuleStateType = {
     username: '',
@@ -12,8 +13,8 @@ const module: Module<ModuleStateType, RootStateType> = {
     state,
     mutations: {
         setFormValue(state, { key, value }: setFormValuePayloadType ){
-            console.log({ key, value })
-            state[key] += value
+            console.log({ key, value });
+            state[key] += value;
         },
         clearFormFields(state){
             state.username = '';
@@ -21,12 +22,9 @@ const module: Module<ModuleStateType, RootStateType> = {
         }
     },
     actions: {
-        submitUserData({ commit, state, rootState }){
-            return new Promise((resolve, reject) => {
-                console.log('SUCCESS');
-                resolve(true);
-                commit('clearFormFields');
-            })
+        submitUserData({ state: { username, password } }){
+            const LoginServes = new LoginApi({ username, password });
+            return LoginServes.signIn();
         }
     },
     getters: {

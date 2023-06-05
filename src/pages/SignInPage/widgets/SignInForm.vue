@@ -58,7 +58,13 @@ export default defineComponent({
   },
   methods: {
     onSubmit() {
-      this.$store.dispatch("signInPage/submitUserData");
+      this.$store.dispatch("signInPage/submitUserData").then((response) => {
+        if (response.data.length === 1) {
+          this.$router.push(APP_ROUTERS.DASHBOARD);
+        } else {
+          console.log("LOGIN ERROR", response.data.error);
+        }
+      });
     },
     onUsernameChange(value: string) {
       this.$store.commit("signInPage/setFormValue", { key: "username", value });

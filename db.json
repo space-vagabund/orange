@@ -2,18 +2,18 @@
   "users": [
     {
       "role": "OWNER",
-      "username": "FAWEFA",
-      "password": "CXXZSFVSE",
-      "id": "user_1685865853242"
+      "username": "kirillbugor",
+      "password": "admin123",
+      "id": "user_1685980825276"
     }
   ],
   "companies": [
     {
-      "companyName": "sMATRTAOO",
-      "companyPassword": "SFSDFVSDZ",
-      "id": "company_1685865853321",
+      "companyName": "smartapp",
+      "companyPassword": "sat",
+      "id": "company_1685980825543",
       "members": [
-        "user_1685865853242"
+        "user_1685980825276"
       ]
     }
   ]

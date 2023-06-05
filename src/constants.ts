@@ -14,3 +14,5 @@ export const COMPANY_ROLES = {
     TEAM_LEADER: 'TEAM_LEADER',
     MEMBER: 'MEMBER'
 }
+
+export const BASE_URL = 'http://localhost:3000'
