@@ -59,7 +59,8 @@ export default defineComponent({
   methods: {
     onSubmit() {
       this.$store.dispatch("signInPage/submitUserData").then((response) => {
-        if (response.data.length === 1) {
+        if (response.data.data.length === 1) {
+          this.$store.commit("signInPage/clearFormFields");
           this.$router.push(APP_ROUTERS.DASHBOARD);
         } else {
           console.log("LOGIN ERROR", response.data.error);

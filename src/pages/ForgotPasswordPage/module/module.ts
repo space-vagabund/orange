@@ -1,6 +1,7 @@
 import { Module } from "vuex";
 import { ModuleStateType, setFormValuePayloadType } from "./types";
 import { RootStateType } from "@/app/store";
+import ForgotPasswordApi from "../api";
 
 const state: ModuleStateType = {
     username: '',
@@ -12,12 +13,14 @@ const module: Module<ModuleStateType, RootStateType> = {
     namespaced: true,
     state,
     actions: {
-        submitForgotPasswordData({ commit, state, rootState }){
-            return new Promise((resolve, reject) => {
-                console.log('SUCCESS');
-                resolve(true);
-                commit('clearFormFields');
-            })
+        submitForgotPasswordData({ state: { username, newPassword, confirmPassword } }){
+            const ForgotPasswordServes = new ForgotPasswordApi({
+                username,
+                newPassword,
+                confirmPassword,
+            });
+
+            return ForgotPasswordServes.forgotPassword();
         }
     },
     mutations: {

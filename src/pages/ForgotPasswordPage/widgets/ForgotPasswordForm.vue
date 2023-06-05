@@ -30,6 +30,7 @@
 import { defineComponent } from "vue";
 import { WidgetTitle, TextField, ButtonComponent } from "@/ui";
 import { mapGetters } from "vuex";
+import { APP_ROUTERS } from "@/constants";
 
 export default defineComponent({
   name: "forgot-password-form",
@@ -65,7 +66,16 @@ export default defineComponent({
       });
     },
     submitForm() {
-      this.$store.dispatch("forgotPasswordPage/submitForgotPasswordData");
+      this.$store
+        .dispatch("forgotPasswordPage/submitForgotPasswordData")
+        .then((response) => {
+          if (response.status === 200) {
+            this.$store.commit("forgotPasswordPage/clearFormFields");
+            this.$router.push(APP_ROUTERS.SIGN_IN);
+          } else {
+            console.log("forgot password error", response);
+          }
+        });
     },
   },
 });

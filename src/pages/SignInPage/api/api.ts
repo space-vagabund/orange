@@ -14,7 +14,6 @@ class LoginApi {
 
     public async signIn() {
         const response = await axios.get(`${this.URL}?username=${this.username}&password=${this.password}`);
-        
         if(response?.data?.length) {
             return { 
                 data: { 
