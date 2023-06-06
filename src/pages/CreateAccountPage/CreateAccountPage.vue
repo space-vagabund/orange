@@ -8,7 +8,9 @@
           <div class="createUserWrapper">
             <CreateUser :title="'Company admin'" />
           </div>
+          <CustomLoader v-if="isLoading" />
           <ButtonComponent
+            v-else
             :onClick="onClick"
             size="default"
             title="Create company"
@@ -23,7 +25,7 @@
 import { defineComponent, PropType } from "vue";
 import { CreateCompany, CreateUser } from "./widgets";
 import { PageBanner } from "@/components";
-import { ButtonComponent } from "@/ui";
+import { ButtonComponent, CustomLoader } from "@/ui";
 import { APP_ROUTERS } from "@/constants";
 
 export default defineComponent({
@@ -33,21 +35,31 @@ export default defineComponent({
     CreateCompany,
     CreateUser,
     ButtonComponent,
+    CustomLoader,
   },
   props: {
     page: String as PropType<"login" | "createAccount">,
   },
+  data() {
+    return {
+      isLoading: false,
+    };
+  },
   methods: {
     onClick() {
+      this.$data.isLoading = true;
       this.$store
         .dispatch("createAccountPage/submitUserData")
         .then((response) => {
-          if (response.error) {
-            console.log("CREATE ACCOUNT ERROR", response);
-          } else {
-            this.$store.commit("createAccountPage/clearFormFields");
-            this.$router.push(APP_ROUTERS.SIGN_IN);
-          }
+          setTimeout(() => {
+            if (response.error) {
+              console.log("CREATE ACCOUNT ERROR", response);
+            } else {
+              this.$store.commit("createAccountPage/clearFormFields");
+              this.$router.push(APP_ROUTERS.SIGN_IN);
+            }
+            this.$data.isLoading = false;
+          }, 1000);
         });
     },
   },

@@ -4,6 +4,7 @@ import BackBtn from './BackBtn.vue';
 import WidgetTitle from './WidgetTitle.vue';
 import TextField from './TextField.vue';
 import ButtonComponent from './ButtonComponent.vue';
+import CustomLoader from './CustomLoader.vue';
 
 export {
     CheckBox,
@@ -11,5 +12,6 @@ export {
     BackBtn,
     WidgetTitle,
     TextField,
-    ButtonComponent
+    ButtonComponent,
+    CustomLoader
 }

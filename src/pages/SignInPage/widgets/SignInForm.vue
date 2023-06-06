@@ -18,7 +18,13 @@
           Forgot password
         </RouterLink>
         <div class="wrapperControls">
-          <ButtonComponent title="Sign in" size="large" :onClick="onSubmit" />
+          <CustomLoader v-if="isLoading" />
+          <ButtonComponent
+            v-else
+            title="Sign in"
+            size="large"
+            :onClick="onSubmit"
+          />
           <div class="rememberCheckbox">
             Remember me
             <CheckBox />
@@ -37,6 +43,7 @@ import {
   WidgetTitle,
   ButtonComponent,
   TextField,
+  CustomLoader,
 } from "@/ui";
 import { APP_ROUTERS } from "@/constants";
 import { mapGetters } from "vuex";
@@ -49,22 +56,27 @@ export default defineComponent({
     WidgetTitle,
     ButtonComponent,
     TextField,
+    CustomLoader,
   },
   data() {
     return {
-      needSaveData: false,
       pathToForgotPasswordPage: APP_ROUTERS.FORGOT_PASSWORD,
+      isLoading: false,
     };
   },
   methods: {
     onSubmit() {
+      this.$data.isLoading = true;
       this.$store.dispatch("signInPage/submitUserData").then((response) => {
-        if (response.data.data.length === 1) {
-          this.$store.commit("signInPage/clearFormFields");
-          this.$router.push(APP_ROUTERS.DASHBOARD);
-        } else {
-          console.log("LOGIN ERROR", response.data.error);
-        }
+        setTimeout(() => {
+          if (response.data.data.length === 1) {
+            this.$store.commit("signInPage/clearFormFields");
+            this.$router.push(APP_ROUTERS.DASHBOARD);
+          } else {
+            console.log("LOGIN ERROR", response.data.error);
+          }
+          this.$data.isLoading = false;
+        }, 1000);
       });
     },
     onUsernameChange(value: string) {

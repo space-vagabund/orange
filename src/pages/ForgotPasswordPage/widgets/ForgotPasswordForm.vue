@@ -20,7 +20,13 @@
         :onChange="onConfirmPasswordInputChange"
       />
       <div class="formSubmitBtn">
-        <ButtonComponent title="Save" size="large" :onClick="submitForm" />
+        <CustomLoader v-if="isLoading" />
+        <ButtonComponent
+          v-else
+          title="Save"
+          size="large"
+          :onClick="submitForm"
+        />
       </div>
     </v-form>
   </v-card>
@@ -28,7 +34,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { WidgetTitle, TextField, ButtonComponent } from "@/ui";
+import { WidgetTitle, TextField, ButtonComponent, CustomLoader } from "@/ui";
 import { mapGetters } from "vuex";
 import { APP_ROUTERS } from "@/constants";
 
@@ -38,6 +44,12 @@ export default defineComponent({
     WidgetTitle,
     TextField,
     ButtonComponent,
+    CustomLoader,
+  },
+  data() {
+    return {
+      isLoading: false,
+    };
   },
   computed: {
     ...mapGetters({
@@ -66,15 +78,19 @@ export default defineComponent({
       });
     },
     submitForm() {
+      this.$data.isLoading = true;
       this.$store
         .dispatch("forgotPasswordPage/submitForgotPasswordData")
         .then((response) => {
-          if (response.status === 200) {
-            this.$store.commit("forgotPasswordPage/clearFormFields");
-            this.$router.push(APP_ROUTERS.SIGN_IN);
-          } else {
-            console.log("forgot password error", response);
-          }
+          setTimeout(() => {
+            if (response.status === 200) {
+              this.$store.commit("forgotPasswordPage/clearFormFields");
+              this.$router.push(APP_ROUTERS.SIGN_IN);
+            } else {
+              console.log("forgot password error", response);
+            }
+            this.$data.isLoading = false;
+          }, 1000);
         });
     },
   },
