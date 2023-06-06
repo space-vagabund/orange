@@ -2,11 +2,13 @@
   <v-text-field
     :label="label"
     :value="value"
+    :messages="''"
     @input="handleChange"
     class="textField"
     variant="underlined"
     required
     clearable
+    :error-messages="errorMessage"
   />
 </template>
 
@@ -30,6 +32,10 @@ export default defineComponent({
     },
     onChange: {
       type: Function,
+      required: false,
+    },
+    errorMessage: {
+      type: String,
       required: false,
     },
   },

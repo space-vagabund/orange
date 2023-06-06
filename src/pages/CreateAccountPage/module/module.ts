@@ -7,7 +7,7 @@ const state: ModuleStateType = {
     username: '',
     password: '',
     companyName: '',
-    companyPassword: ''
+    companyPassword: '',
 }
 
 const module: Module<ModuleStateType, RootStateType> = {

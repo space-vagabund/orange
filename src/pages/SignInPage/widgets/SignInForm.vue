@@ -7,12 +7,14 @@
           :value="username"
           :onChange="onUsernameChange"
           :keyValue="'username'"
+          :errorMessage="isError && !username.length ? 'Required' : ''"
           label="Username"
         />
         <PasswordInput
           :keyValue="'password'"
           :value="password"
           :onChange="onPasswordChange"
+          :errorMessage="isError && !password.length ? 'Required' : ''"
         />
         <RouterLink :to="pathToForgotPasswordPage" class="toForgotPasswordPage">
           Forgot password
@@ -62,10 +64,18 @@ export default defineComponent({
     return {
       pathToForgotPasswordPage: APP_ROUTERS.FORGOT_PASSWORD,
       isLoading: false,
+      isError: false,
     };
   },
   methods: {
     onSubmit() {
+      console.log(this.username, this.password);
+      if (!this.username || !this.password) {
+        this.$data.isError = true;
+
+        return;
+      }
+
       this.$data.isLoading = true;
       this.$store.dispatch("signInPage/submitUserData").then((response) => {
         setTimeout(() => {
@@ -80,10 +90,11 @@ export default defineComponent({
       });
     },
     onUsernameChange(value: string) {
+      this.$data.isError = false;
       this.$store.commit("signInPage/setFormValue", { key: "username", value });
     },
     onPasswordChange(value: string) {
-      //console.log({ key: "password", value });
+      this.$data.isError = false;
       this.$store.commit("signInPage/setFormValue", { key: "password", value });
     },
   },
@@ -109,8 +120,9 @@ export default defineComponent({
   }
   .toForgotPasswordPage {
     color: #325279;
-    margin: 12px 0;
+    margin-top: 16px;
     text-decoration: none;
+    display: inline-block;
   }
   .wrapperControls {
     display: flex;

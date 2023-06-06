@@ -4,9 +4,14 @@
     <TextField
       :value="username"
       :onChange="onUsernameChange"
+      :errorMessage="isError && !username.length ? 'Required' : ''"
       label="Username"
     />
-    <PasswordInput :value="userPassword" :onChange="onPasswordChange" />
+    <PasswordInput
+      :value="userPassword"
+      :errorMessage="isError && !userPassword.length ? 'Required' : ''"
+      :onChange="onPasswordChange"
+    />
   </v-card>
 </template>
 
@@ -27,18 +32,24 @@ export default defineComponent({
       type: String,
       required: true,
     },
+    isError: {
+      type: Boolean,
+      required: true,
+    },
   },
   data() {
     return {};
   },
   methods: {
     onUsernameChange(value: string) {
+      this.$emit("changeErrorState");
       this.$store.commit("createAccountPage/setFormValue", {
         key: "username",
         value,
       });
     },
     onPasswordChange(value: string) {
+      this.$emit("changeErrorState");
       this.$store.commit("createAccountPage/setFormValue", {
         key: "password",
         value,

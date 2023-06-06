@@ -4,9 +4,16 @@
     <div class="contentBlock">
       <v-form>
         <v-card max-width="444" class="formCard widgetContainer">
-          <CreateCompany />
+          <CreateCompany
+            @changeErrorState="changeErrorState"
+            :isError="isError"
+          />
           <div class="createUserWrapper">
-            <CreateUser :title="'Company admin'" />
+            <CreateUser
+              @changeErrorState="changeErrorState"
+              :isError="isError"
+              :title="'Company admin'"
+            />
           </div>
           <CustomLoader v-if="isLoading" />
           <ButtonComponent
@@ -27,6 +34,7 @@ import { CreateCompany, CreateUser } from "./widgets";
 import { PageBanner } from "@/components";
 import { ButtonComponent, CustomLoader } from "@/ui";
 import { APP_ROUTERS } from "@/constants";
+import { mapGetters } from "vuex";
 
 export default defineComponent({
   name: "create-account-page",
@@ -43,10 +51,32 @@ export default defineComponent({
   data() {
     return {
       isLoading: false,
+      isError: false,
     };
   },
+  computed: {
+    ...mapGetters({
+      companyName: "createAccountPage/getCompanyName",
+      companyPassword: "createAccountPage/getCompanyPassword",
+      username: "createAccountPage/getUsername",
+      userPassword: "createAccountPage/getUserPassword",
+    }),
+  },
   methods: {
+    changeErrorState() {
+      this.$data.isError = false;
+    },
     onClick() {
+      if (
+        !this.companyName ||
+        !this.companyPassword ||
+        !this.username ||
+        !this.userPassword
+      ) {
+        this.$data.isError = true;
+        return;
+      }
+
       this.$data.isLoading = true;
       this.$store
         .dispatch("createAccountPage/submitUserData")

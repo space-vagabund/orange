@@ -2,14 +2,19 @@
   <div class="wrapperPasswordInput">
     <v-text-field
       :value="value"
-      @input="handleChange"
       :type="type"
+      :error-messages="errorMessage"
+      @input="handleChange"
       label="Password"
       variant="underlined"
       required
       clearable
     />
-    <span class="inputIcon material-icons-outlined" @click="toggleInputType">
+    <span
+      class="inputIcon material-icons-outlined"
+      :class="errorMessage ? 'error' : ''"
+      @click="toggleInputType"
+    >
       remove_red_eye
     </span>
   </div>
@@ -27,6 +32,10 @@ export default defineComponent({
     },
     onChange: {
       type: Function,
+      required: false,
+    },
+    errorMessage: {
+      type: String,
       required: false,
     },
   },
@@ -57,6 +66,10 @@ export default defineComponent({
     top: 30%;
     right: 0;
     cursor: pointer;
+  }
+
+  .error {
+    color: rgb(var(--v-theme-error));
   }
 }
 </style>

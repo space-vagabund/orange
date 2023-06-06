@@ -8,16 +8,19 @@
         label="Username"
         :value="username"
         :onChange="onUsernameInputChange"
+        :errorMessage="isError && !username.length ? 'Required' : ''"
       />
       <TextField
         label="New password"
         :value="newPassword"
         :onChange="onNewPasswordInputChange"
+        :errorMessage="isError && !newPassword.length ? 'Required' : ''"
       />
       <TextField
         label="Repeat new password"
         :value="confirmPassword"
         :onChange="onConfirmPasswordInputChange"
+        :errorMessage="isError && !confirmPassword.length ? 'Required' : ''"
       />
       <div class="formSubmitBtn">
         <CustomLoader v-if="isLoading" />
@@ -49,6 +52,7 @@ export default defineComponent({
   data() {
     return {
       isLoading: false,
+      isError: false,
     };
   },
   computed: {
@@ -60,24 +64,34 @@ export default defineComponent({
   },
   methods: {
     onUsernameInputChange(value: string) {
+      this.clearIsErrorState();
       this.$store.commit("forgotPasswordPage/setFormValue", {
         key: "username",
         value,
       });
     },
     onNewPasswordInputChange(value: string) {
+      this.clearIsErrorState();
       this.$store.commit("forgotPasswordPage/setFormValue", {
         key: "newPassword",
         value,
       });
     },
     onConfirmPasswordInputChange(value: string) {
+      this.clearIsErrorState();
       this.$store.commit("forgotPasswordPage/setFormValue", {
         key: "confirmPassword",
         value,
       });
     },
+    clearIsErrorState() {
+      this.$data.isError = false;
+    },
     submitForm() {
+      if (!this.username || !this.newPassword || !this.confirmPassword) {
+        this.$data.isError = true;
+        return;
+      }
       this.$data.isLoading = true;
       this.$store
         .dispatch("forgotPasswordPage/submitForgotPasswordData")

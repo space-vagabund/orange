@@ -5,8 +5,13 @@
       :value="companyName"
       :onChange="onCompanyNameChange"
       label="Company name"
+      :errorMessage="isError && !companyName.length ? 'Required' : ''"
     />
-    <PasswordInput :value="companyPassword" :onChange="onPasswordChange" />
+    <PasswordInput
+      :value="companyPassword"
+      :onChange="onPasswordChange"
+      :errorMessage="isError && !companyPassword.length ? 'Required' : ''"
+    />
   </v-card>
 </template>
 
@@ -22,14 +27,22 @@ export default defineComponent({
     WidgetTitle,
     TextField,
   },
+  props: {
+    isError: {
+      type: Boolean,
+      required: true,
+    },
+  },
   methods: {
     onCompanyNameChange(value: string) {
+      this.$emit("changeErrorState");
       this.$store.commit("createAccountPage/setFormValue", {
         key: "companyName",
         value,
       });
     },
     onPasswordChange(value: string) {
+      this.$emit("changeErrorState");
       this.$store.commit("createAccountPage/setFormValue", {
         key: "companyPassword",
         value,

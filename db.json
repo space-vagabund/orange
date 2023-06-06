@@ -5,6 +5,12 @@
       "username": "kirillbugor",
       "password": "admin12345",
       "id": "user_1685980825276"
+    },
+    {
+      "role": "OWNER",
+      "username": "",
+      "password": "",
+      "id": "user_1686035321381"
     }
   ],
   "companies": [
@@ -14,6 +20,14 @@
       "id": "company_1685980825543",
       "members": [
         "user_1685980825276"
+      ]
+    },
+    {
+      "companyName": "",
+      "companyPassword": "",
+      "id": "company_1686035321479",
+      "members": [
+        "user_1686035321381"
       ]
     }
   ]
