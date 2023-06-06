@@ -5,12 +5,12 @@
       <v-form>
         <v-card max-width="444" class="formCard widgetContainer">
           <CreateCompany
-            @changeErrorState="changeErrorState"
+            @clearErrorState="clearErrorState"
             :isError="isError"
           />
           <div class="createUserWrapper">
             <CreateUser
-              @changeErrorState="changeErrorState"
+              @clearErrorState="clearErrorState"
               :isError="isError"
               :title="'Company admin'"
             />
@@ -22,6 +22,7 @@
             size="default"
             title="Create company"
           />
+          <ErrorMessage v-if="isRequestError" />
         </v-card>
       </v-form>
     </div>
@@ -32,7 +33,7 @@
 import { defineComponent, PropType } from "vue";
 import { CreateCompany, CreateUser } from "./widgets";
 import { PageBanner } from "@/components";
-import { ButtonComponent, CustomLoader } from "@/ui";
+import { ButtonComponent, CustomLoader, ErrorMessage } from "@/ui";
 import { APP_ROUTERS } from "@/constants";
 import { mapGetters } from "vuex";
 
@@ -44,6 +45,7 @@ export default defineComponent({
     CreateUser,
     ButtonComponent,
     CustomLoader,
+    ErrorMessage,
   },
   props: {
     page: String as PropType<"login" | "createAccount">,
@@ -52,6 +54,7 @@ export default defineComponent({
     return {
       isLoading: false,
       isError: false,
+      isRequestError: false,
     };
   },
   computed: {
@@ -63,8 +66,9 @@ export default defineComponent({
     }),
   },
   methods: {
-    changeErrorState() {
+    clearErrorState() {
       this.$data.isError = false;
+      this.$data.isRequestError = false;
     },
     onClick() {
       if (
@@ -84,6 +88,7 @@ export default defineComponent({
           setTimeout(() => {
             if (response.error) {
               console.log("CREATE ACCOUNT ERROR", response);
+              this.$data.isRequestError = true;
             } else {
               this.$store.commit("createAccountPage/clearFormFields");
               this.$router.push(APP_ROUTERS.SIGN_IN);

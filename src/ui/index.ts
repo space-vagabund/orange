@@ -5,6 +5,7 @@ import WidgetTitle from './WidgetTitle.vue';
 import TextField from './TextField.vue';
 import ButtonComponent from './ButtonComponent.vue';
 import CustomLoader from './CustomLoader.vue';
+import ErrorMessage from './ErrorMessage.vue';
 
 export {
     CheckBox,
@@ -13,5 +14,6 @@ export {
     WidgetTitle,
     TextField,
     ButtonComponent,
-    CustomLoader
+    CustomLoader,
+    ErrorMessage
 }

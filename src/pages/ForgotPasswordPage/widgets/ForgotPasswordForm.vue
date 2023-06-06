@@ -30,6 +30,7 @@
           size="large"
           :onClick="submitForm"
         />
+        <ErrorMessage v-if="isRequestError" />
       </div>
     </v-form>
   </v-card>
@@ -37,7 +38,13 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { WidgetTitle, TextField, ButtonComponent, CustomLoader } from "@/ui";
+import {
+  WidgetTitle,
+  TextField,
+  ButtonComponent,
+  CustomLoader,
+  ErrorMessage,
+} from "@/ui";
 import { mapGetters } from "vuex";
 import { APP_ROUTERS } from "@/constants";
 
@@ -48,11 +55,13 @@ export default defineComponent({
     TextField,
     ButtonComponent,
     CustomLoader,
+    ErrorMessage,
   },
   data() {
     return {
       isLoading: false,
       isError: false,
+      isRequestError: false,
     };
   },
   computed: {
@@ -64,28 +73,29 @@ export default defineComponent({
   },
   methods: {
     onUsernameInputChange(value: string) {
-      this.clearIsErrorState();
+      this.clearErrorsState();
       this.$store.commit("forgotPasswordPage/setFormValue", {
         key: "username",
         value,
       });
     },
     onNewPasswordInputChange(value: string) {
-      this.clearIsErrorState();
+      this.clearErrorsState();
       this.$store.commit("forgotPasswordPage/setFormValue", {
         key: "newPassword",
         value,
       });
     },
     onConfirmPasswordInputChange(value: string) {
-      this.clearIsErrorState();
+      this.clearErrorsState();
       this.$store.commit("forgotPasswordPage/setFormValue", {
         key: "confirmPassword",
         value,
       });
     },
-    clearIsErrorState() {
+    clearErrorsState() {
       this.$data.isError = false;
+      this.$data.isRequestError = false;
     },
     submitForm() {
       if (!this.username || !this.newPassword || !this.confirmPassword) {
@@ -102,6 +112,7 @@ export default defineComponent({
               this.$router.push(APP_ROUTERS.SIGN_IN);
             } else {
               console.log("forgot password error", response);
+              this.$data.isRequestError = true;
             }
             this.$data.isLoading = false;
           }, 1000);

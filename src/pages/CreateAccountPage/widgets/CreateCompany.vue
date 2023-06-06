@@ -35,14 +35,14 @@ export default defineComponent({
   },
   methods: {
     onCompanyNameChange(value: string) {
-      this.$emit("changeErrorState");
+      this.$emit("clearErrorState");
       this.$store.commit("createAccountPage/setFormValue", {
         key: "companyName",
         value,
       });
     },
     onPasswordChange(value: string) {
-      this.$emit("changeErrorState");
+      this.$emit("clearErrorState");
       this.$store.commit("createAccountPage/setFormValue", {
         key: "companyPassword",
         value,

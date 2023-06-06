@@ -32,6 +32,7 @@
             <CheckBox />
           </div>
         </div>
+        <ErrorMessage v-if="isRequestError" />
       </v-form>
     </v-card>
   </div>
@@ -46,6 +47,7 @@ import {
   ButtonComponent,
   TextField,
   CustomLoader,
+  ErrorMessage,
 } from "@/ui";
 import { APP_ROUTERS } from "@/constants";
 import { mapGetters } from "vuex";
@@ -59,12 +61,14 @@ export default defineComponent({
     ButtonComponent,
     TextField,
     CustomLoader,
+    ErrorMessage,
   },
   data() {
     return {
       pathToForgotPasswordPage: APP_ROUTERS.FORGOT_PASSWORD,
       isLoading: false,
       isError: false,
+      isRequestError: false,
     };
   },
   methods: {
@@ -84,17 +88,22 @@ export default defineComponent({
             this.$router.push(APP_ROUTERS.DASHBOARD);
           } else {
             console.log("LOGIN ERROR", response.data.error);
+            this.$data.isRequestError = true;
           }
           this.$data.isLoading = false;
         }, 1000);
       });
     },
-    onUsernameChange(value: string) {
+    clearErrorsState() {
       this.$data.isError = false;
+      this.$data.isRequestError = false;
+    },
+    onUsernameChange(value: string) {
+      this.clearErrorsState();
       this.$store.commit("signInPage/setFormValue", { key: "username", value });
     },
     onPasswordChange(value: string) {
-      this.$data.isError = false;
+      this.clearErrorsState();
       this.$store.commit("signInPage/setFormValue", { key: "password", value });
     },
   },

@@ -67,7 +67,6 @@ export default defineComponent({
     right: 0;
     cursor: pointer;
   }
-
   .error {
     color: rgb(var(--v-theme-error));
   }
