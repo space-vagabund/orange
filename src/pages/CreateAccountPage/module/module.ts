@@ -15,7 +15,7 @@ const module: Module<ModuleStateType, RootStateType> = {
     state,
     mutations: {
         setFormValue(state, { key, value }: setFormValuePayloadType){
-            state[key] += value;
+            state[key] = value;
         },
         clearFormFields(state){
             state.companyName = '';

@@ -48,9 +48,9 @@ export default defineComponent({
     toggleInputType() {
       this.type = this.type === "password" ? "default" : "password";
     },
-    handleChange({ data }: any) {
+    handleChange(event: any) {
       if (this.onChange) {
-        this.onChange(data);
+        this.onChange(event.target.value);
       }
     },
   },

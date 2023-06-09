@@ -43,9 +43,10 @@ export default defineComponent({
     return {};
   },
   methods: {
-    handleChange({ data }: any) {
+    handleChange(event: any) {
+      console.log("event", event.target.value);
       if (this.onChange) {
-        this.onChange(data);
+        this.onChange(event.target.value);
       }
     },
   },

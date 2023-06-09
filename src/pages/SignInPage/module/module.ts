@@ -13,8 +13,7 @@ const module: Module<ModuleStateType, RootStateType> = {
     state,
     mutations: {
         setFormValue(state, { key, value }: setFormValuePayloadType ){
-            console.log({ key, value });
-            state[key] += value;
+            state[key] = value;
         },
         clearFormFields(state){
             state.username = '';
