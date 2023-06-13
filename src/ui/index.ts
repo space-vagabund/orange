@@ -15,5 +15,5 @@ export {
     TextField,
     ButtonComponent,
     CustomLoader,
-    ErrorMessage
+    ErrorMessage,
 }

@@ -3,5 +3,5 @@ import CreateUser from './CreateUser.vue';
 
 export {
     CreateCompany,
-    CreateUser
+    CreateUser,
 }

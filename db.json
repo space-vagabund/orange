@@ -11,6 +11,12 @@
       "username": "",
       "password": "",
       "id": "user_1686035321381"
+    },
+    {
+      "role": "OWNER",
+      "username": "misha",
+      "password": "mishapass",
+      "id": "user_1686636433374"
     }
   ],
   "companies": [
@@ -28,6 +34,14 @@
       "id": "company_1686035321479",
       "members": [
         "user_1686035321381"
+      ]
+    },
+    {
+      "companyName": "newcode",
+      "companyPassword": "newcodepass",
+      "id": "company_1686636433429",
+      "members": [
+        "user_1686636433374"
       ]
     }
   ]

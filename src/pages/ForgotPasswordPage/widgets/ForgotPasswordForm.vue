@@ -30,7 +30,15 @@
           size="large"
           :onClick="submitForm"
         />
-        <ErrorMessage v-if="isRequestError" />
+        <ErrorPopup
+          :isRequestError="isRequestError"
+          :clearIsRequestErrorState="clearIsRequestErrorState"
+        />
+        <SuccessPopup
+          :isRequestSuccess="isRequestSuccess"
+          :clearIsRequestSuccessState="clearIsRequestSuccessState"
+          :title="'New password created'"
+        />
       </div>
     </v-form>
   </v-card>
@@ -38,15 +46,9 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import {
-  WidgetTitle,
-  TextField,
-  ButtonComponent,
-  CustomLoader,
-  ErrorMessage,
-} from "@/ui";
+import { WidgetTitle, TextField, ButtonComponent, CustomLoader } from "@/ui";
 import { mapGetters } from "vuex";
-import { APP_ROUTERS } from "@/constants";
+import { ErrorPopup, SuccessPopup } from "@/components";
 
 export default defineComponent({
   name: "forgot-password-form",
@@ -55,13 +57,15 @@ export default defineComponent({
     TextField,
     ButtonComponent,
     CustomLoader,
-    ErrorMessage,
+    ErrorPopup,
+    SuccessPopup,
   },
   data() {
     return {
       isLoading: false,
       isError: false,
       isRequestError: false,
+      isRequestSuccess: false,
     };
   },
   computed: {
@@ -109,14 +113,21 @@ export default defineComponent({
           setTimeout(() => {
             if (response.status === 200) {
               this.$store.commit("forgotPasswordPage/clearFormFields");
-              this.$router.push(APP_ROUTERS.SIGN_IN);
-            } else {
+              this.$data.isRequestSuccess = true;
+              //this.$router.push(APP_ROUTERS.CREATE_ACCOUNT);
               console.log("forgot password error", response);
+            } else {
               this.$data.isRequestError = true;
             }
             this.$data.isLoading = false;
           }, 1000);
         });
+    },
+    clearIsRequestErrorState() {
+      this.$data.isRequestError = false;
+    },
+    clearIsRequestSuccessState() {
+      this.$data.isRequestSuccess = false;
     },
   },
 });

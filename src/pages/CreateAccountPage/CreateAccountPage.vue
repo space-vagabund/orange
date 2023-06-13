@@ -27,14 +27,22 @@
       </v-form>
     </div>
   </div>
+  <SuccessPopup
+    :clearIsRequestSuccessState="clearIsRequestSuccessState"
+    :isRequestSuccess="isRequestSuccess"
+    :title="'Account created!'"
+  />
+  <ErrorPopup
+    :clearIsRequestErrorState="clearIsRequestErrorState"
+    :isRequestError="isRequestError"
+  />
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 import { CreateCompany, CreateUser } from "./widgets";
-import { PageBanner } from "@/components";
+import { ErrorPopup, PageBanner, SuccessPopup } from "@/components";
 import { ButtonComponent, CustomLoader, ErrorMessage } from "@/ui";
-import { APP_ROUTERS } from "@/constants";
 import { mapGetters } from "vuex";
 
 export default defineComponent({
@@ -46,6 +54,8 @@ export default defineComponent({
     ButtonComponent,
     CustomLoader,
     ErrorMessage,
+    SuccessPopup,
+    ErrorPopup,
   },
   props: {
     page: String as PropType<"login" | "createAccount">,
@@ -55,6 +65,7 @@ export default defineComponent({
       isLoading: false,
       isError: false,
       isRequestError: false,
+      isRequestSuccess: false,
     };
   },
   computed: {
@@ -90,12 +101,19 @@ export default defineComponent({
               console.log("CREATE ACCOUNT ERROR", response);
               this.$data.isRequestError = true;
             } else {
+              console.log("trigger");
               this.$store.commit("createAccountPage/clearFormFields");
-              this.$router.push(APP_ROUTERS.SIGN_IN);
+              this.$data.isRequestSuccess = true;
             }
             this.$data.isLoading = false;
           }, 1000);
         });
+    },
+    clearIsRequestSuccessState() {
+      this.$data.isRequestSuccess = false;
+    },
+    clearIsRequestErrorState() {
+      this.$data.isRequestError = false;
     },
   },
 });

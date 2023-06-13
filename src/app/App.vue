@@ -48,4 +48,29 @@ h3 {
     rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset !important;
   background: #fff3e0 !important;
 }
+
+.popupBlock {
+  background: #fff;
+  padding: 20px 20px 46px;
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  &_title {
+    font-size: 24px;
+    flex-grow: 1;
+  }
+  &_message {
+    display: inline-block;
+    font-size: 16px;
+    margin: 14px 0 26px;
+  }
+  &_img {
+    width: 150px;
+    margin-bottom: 20px;
+  }
+}
 </style>
