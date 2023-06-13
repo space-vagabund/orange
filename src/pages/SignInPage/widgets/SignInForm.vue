@@ -83,7 +83,16 @@ export default defineComponent({
       this.$data.isLoading = true;
       this.$store.dispatch("signInPage/submitUserData").then((response) => {
         setTimeout(() => {
-          if (response.data.data.length === 1) {
+          if (!response.data.error) {
+            const userSessionData = {
+              ...response.data,
+              loginTime: new Date().getTime(),
+            };
+            // localStorage.setItem(
+            //   LOCAL_STORAGE_KEYS.USER_SESSION_KEY,
+            //   JSON.stringify(userSessionData)
+            // );
+            console.log("userSessionData", userSessionData);
             this.$store.commit("signInPage/clearFormFields");
             this.$router.push(APP_ROUTERS.DASHBOARD);
           } else {

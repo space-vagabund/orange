@@ -2,46 +2,18 @@
   "users": [
     {
       "role": "OWNER",
-      "username": "kirillbugor",
-      "password": "admin12345",
-      "id": "user_1685980825276"
-    },
-    {
-      "role": "OWNER",
-      "username": "",
-      "password": "",
-      "id": "user_1686035321381"
-    },
-    {
-      "role": "OWNER",
-      "username": "misha",
-      "password": "mishapass",
-      "id": "user_1686636433374"
+      "username": "mans",
+      "password": "manspass",
+      "id": "user_1686638383775"
     }
   ],
   "companies": [
     {
-      "companyName": "smartapp",
-      "companyPassword": "sat",
-      "id": "company_1685980825543",
+      "companyName": "softteco",
+      "companyPassword": "softtecopass",
+      "id": "company_1686638383836",
       "members": [
-        "user_1685980825276"
-      ]
-    },
-    {
-      "companyName": "",
-      "companyPassword": "",
-      "id": "company_1686035321479",
-      "members": [
-        "user_1686035321381"
-      ]
-    },
-    {
-      "companyName": "newcode",
-      "companyPassword": "newcodepass",
-      "id": "company_1686636433429",
-      "members": [
-        "user_1686636433374"
+        "user_1686638383775"
       ]
     }
   ]
