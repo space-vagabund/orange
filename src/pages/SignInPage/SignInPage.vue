@@ -3,7 +3,7 @@
     <PageBanner :page="'login'" />
     <div class="signInBlock">
       <SignInForm />
-      <div class="bottomLinkContainer">
+      <div class="bottomLinkContainer animate__animated animate__bounceInRight">
         <RouterLink :to="linkToCreateAccount" class="link">
           Don't have account? Create Account.
         </RouterLink>

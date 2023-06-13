@@ -23,6 +23,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+@import "animate.css";
 @import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Titillium+Web:wght@200;300;400;700&display=swap");
 * {
@@ -39,7 +40,7 @@ h3 {
   box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
     rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
     rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px !important;
-  background: #ffcc80 !important;
+  background: #fcda96 !important;
 }
 .widget {
   padding: 16px !important;

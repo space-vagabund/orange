@@ -10,6 +10,7 @@
     "start": "concurrently \"npm run server\" \"npm run serve\""
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "axios": "^1.4.0",
     "concurrently": "^8.0.1",
     "core-js": "^3.8.3",

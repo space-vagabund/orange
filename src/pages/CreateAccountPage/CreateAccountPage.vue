@@ -2,7 +2,7 @@
   <div class="createAccountPage">
     <PageBanner :page="'createAccount'" />
     <div class="contentBlock">
-      <v-form>
+      <v-form class="animate__animated animate__bounceInRight">
         <v-card max-width="444" class="formCard widgetContainer">
           <CreateCompany
             @clearErrorState="clearErrorState"

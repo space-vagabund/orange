@@ -6,8 +6,12 @@ import TextField from './TextField.vue';
 import ButtonComponent from './ButtonComponent.vue';
 import CustomLoader from './CustomLoader.vue';
 import ErrorMessage from './ErrorMessage.vue';
+import AppLogo from './AppLogo.vue';
+import BoardIco from './BoardIco.vue';
+import WelcomeIco from './WelcomeIco.vue';
 
 export {
+    AppLogo,
     CheckBox,
     PasswordInput,
     BackBtn,
@@ -16,4 +20,6 @@ export {
     ButtonComponent,
     CustomLoader,
     ErrorMessage,
+    WelcomeIco,
+    BoardIco
 }

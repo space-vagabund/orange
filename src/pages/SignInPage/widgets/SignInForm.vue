@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container animate__animated animate__bounceInRight">
     <v-card width="346" class="mx-auto signInFormWrapper widget">
       <v-form @submit.prevent="onSubmit">
         <WidgetTitle value="Sign in" />

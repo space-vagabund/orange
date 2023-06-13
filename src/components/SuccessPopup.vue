@@ -5,7 +5,7 @@
     width="auto"
   >
     <div class="popupBlock">
-      <div class="popupBlock_message">Account created!</div>
+      <div class="popupBlock_title">Account created!</div>
       <img
         class="popupBlock_img"
         src="../assets/undraw_powerful_re_frhr.svg"

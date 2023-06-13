@@ -5,6 +5,12 @@
       "username": "mans",
       "password": "manspass",
       "id": "user_1686638383775"
+    },
+    {
+      "role": "OWNER",
+      "username": "name",
+      "password": "name123",
+      "id": "user_1686655889227"
     }
   ],
   "companies": [
@@ -14,6 +20,14 @@
       "id": "company_1686638383836",
       "members": [
         "user_1686638383775"
+      ]
+    },
+    {
+      "companyName": "test",
+      "companyPassword": "test123",
+      "id": "company_1686655889374",
+      "members": [
+        "user_1686655889227"
       ]
     }
   ]
