@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createCompanyAndAdminProps, createCompanyProps, createUserProps } from "./types";
+import { CreateCompanyAndAdminPropsType, CreateCompanyPropsType, CreateUserPropsType } from "./types";
 import { BASE_URL } from "@/constants";
 
 class CreateAccountApi {
@@ -16,7 +16,7 @@ class CreateAccountApi {
         companyPassword, 
         username, 
         userPassword
-    }: createCompanyAndAdminProps) {
+    }: CreateCompanyAndAdminPropsType) {
         const userResponse = await this.createUser({ username, userPassword, role: 'OWNER' });
 
         if(userResponse.data.isError){
@@ -40,7 +40,7 @@ class CreateAccountApi {
         return { companyResponse, userResponse };
     }
 
-    private async createCompany({ companyName, companyPassword, ownerId }: createCompanyProps){
+    private async createCompany({ companyName, companyPassword, ownerId }: CreateCompanyPropsType){
         const isCompanyExist = await this.checkCompanyExits(companyPassword);
 
         if(isCompanyExist) {
@@ -64,7 +64,7 @@ class CreateAccountApi {
         return createCompanyResult
     }
 
-    public async createUser({ username, userPassword, role }: createUserProps) {
+    public async createUser({ username, userPassword, role }: CreateUserPropsType) {
         const isUserExist = await this.checkUserExits(userPassword);
 
         if(isUserExist) {

@@ -2,7 +2,8 @@ export const APP_ROUTERS = {
     SIGN_IN: '/sign-in',
     DASHBOARD: '/dashboard',
     CREATE_ACCOUNT: '/create-account',
-    FORGOT_PASSWORD: '/forgot-password'
+    FORGOT_PASSWORD: '/forgot-password',
+    PROFILE: '/profile',
 }
 
 export const LOCAL_STORAGE_KEYS = {
@@ -15,4 +16,4 @@ export const COMPANY_ROLES = {
     MEMBER: 'MEMBER'
 }
 
-export const BASE_URL = 'http://localhost:3000'
+export const BASE_URL = 'http://localhost:3000';

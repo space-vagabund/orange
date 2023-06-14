@@ -3,7 +3,7 @@ export type ModuleStateType = {
     password: string,
 }
 
-export type setFormValuePayloadType = {
+export type SetFormValuePayloadType = {
     key: 'username' | 'password',
     value: string
 };

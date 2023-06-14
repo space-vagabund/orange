@@ -49,7 +49,7 @@ import {
   CustomLoader,
   ErrorMessage,
 } from "@/ui";
-import { APP_ROUTERS } from "@/constants";
+import { APP_ROUTERS, LOCAL_STORAGE_KEYS } from "@/constants";
 import { mapGetters } from "vuex";
 
 export default defineComponent({
@@ -88,12 +88,13 @@ export default defineComponent({
               ...response.data,
               loginTime: new Date().getTime(),
             };
-            // localStorage.setItem(
-            //   LOCAL_STORAGE_KEYS.USER_SESSION_KEY,
-            //   JSON.stringify(userSessionData)
-            // );
+            localStorage.setItem(
+              LOCAL_STORAGE_KEYS.USER_SESSION_KEY,
+              JSON.stringify(userSessionData)
+            );
             console.log("userSessionData", userSessionData);
             this.$store.commit("signInPage/clearFormFields");
+            this.$store.commit("profilePage/setUserData");
             this.$router.push(APP_ROUTERS.DASHBOARD);
           } else {
             console.log("LOGIN ERROR", response.data.error);

@@ -1,5 +1,5 @@
 import { Module } from "vuex";
-import { ModuleStateType, setFormValuePayloadType } from "./types";
+import { ModuleStateType, SetFormValuePayloadType } from "./types";
 import { RootStateType } from "@/app/store";
 import CreateAccountApi from "../api";
 
@@ -14,7 +14,7 @@ const module: Module<ModuleStateType, RootStateType> = {
     namespaced: true,
     state,
     mutations: {
-        setFormValue(state, { key, value }: setFormValuePayloadType){
+        setFormValue(state, { key, value }: SetFormValuePayloadType){
             state[key] = value;
         },
         clearFormFields(state){

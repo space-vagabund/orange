@@ -4,7 +4,7 @@ export type ModuleStateType = {
     confirmPassword: string,
 }
 
-export type setFormValuePayloadType = {
+export type SetFormValuePayloadType = {
     key: 'username' | 'newPassword' | 'confirmPassword',
     value: string
 }

@@ -1,17 +1,17 @@
-export type createCompanyAndAdminProps = {
+export type CreateCompanyAndAdminPropsType = {
     companyName: string,
     companyPassword: string,
     username: string,
     userPassword: string,
 }
 
-export type createCompanyProps = {
+export type CreateCompanyPropsType = {
     companyName: string,
     companyPassword: string,
     ownerId: string
 }
 
-export type createUserProps = {
+export type CreateUserPropsType = {
     username: string,
     userPassword: string,
     role: ROLE_TYPE

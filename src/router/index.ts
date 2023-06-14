@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { APP_ROUTERS } from "@/constants";
 import DashboardPage from "@/pages/DashboardPage";
-import SignInPage from "../pages/SignInPage";
-import CreateAccountPage from "../pages/CreateAccountPage";
-import ForgotPasswordPage from "../pages/ForgotPasswordPage";
+import SignInPage from "@/pages/SignInPage";
+import CreateAccountPage from "@/pages/CreateAccountPage";
+import ForgotPasswordPage from "@/pages/ForgotPasswordPage";
+import ProfilePage from "@/pages/ProfilePage";
 
 const routes = [{
     path: APP_ROUTERS.SIGN_IN,
@@ -21,6 +22,10 @@ const routes = [{
     path: APP_ROUTERS.DASHBOARD,
     name: 'dashboard-page',
     component: DashboardPage
+}, {
+    path: APP_ROUTERS.PROFILE,
+    name: 'profile-page',
+    component: ProfilePage
 }];
 
 const history = createWebHistory(process.env.BASE_URL);

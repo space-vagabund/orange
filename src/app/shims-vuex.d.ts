@@ -18,6 +18,17 @@ declare module '@vue/runtime-core' {
       username: string,
       newPassword: string,
       confirmPassword: string,
+    },
+    profilePage: {
+      userData: {
+        companyId: string
+        companyName: string
+        id: string
+        loginTime: number
+        password: string
+        role: string
+        username: string
+      }
     }
   }
   // provide typings for `this.$store`
