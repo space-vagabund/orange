@@ -1,21 +1,23 @@
 <template>
-    <div>
-        dashboardPage
-    </div>
+  <div class="dashboardPage">
+    <PageHeader />
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { PageHeader } from "@/components";
+import { defineComponent } from "vue";
 
 export default defineComponent({
-    name: 'dashboard-page',
-    data(){
-        return {
-            
-        }
-    }
-})
+  name: "dashboard-page",
+  components: {
+    PageHeader,
+  },
+  setup() {},
+});
 </script>
 
-<style>
+<style lang="scss" scoped>
+.dashboardPage {
+}
 </style>
