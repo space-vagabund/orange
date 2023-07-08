@@ -6,7 +6,7 @@ export interface IBaseUserData {
     companyId: string
     companyName: string
     id: string
-    loginTime: number
+    created: number
     password: string
     role: string
     username: string

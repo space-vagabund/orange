@@ -6,6 +6,7 @@ import LoginApi from "../api";
 const state: ModuleStateType = {
     username: '',
     password: '',
+    needRemember: false
 }
 
 const module: Module<ModuleStateType, RootStateType> = {
@@ -18,6 +19,10 @@ const module: Module<ModuleStateType, RootStateType> = {
         clearFormFields(state){
             state.username = '';
             state.password = '';
+            state.needRemember = false;
+        },
+        toggleRememberState(state){
+            state.needRemember = !state.needRemember
         }
     },
     actions: {
@@ -29,6 +34,7 @@ const module: Module<ModuleStateType, RootStateType> = {
     getters: {
         getUsername: (state) => state.username,
         getPassword: (state) => state.password,
+        getNeedRemember: (state) => state.needRemember
     },
 }
 

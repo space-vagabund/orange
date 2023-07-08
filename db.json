@@ -4,30 +4,17 @@
       "role": "OWNER",
       "username": "mans",
       "password": "manspass",
-      "id": "user_1686638383775"
-    },
-    {
-      "role": "OWNER",
-      "username": "name",
-      "password": "name123",
-      "id": "user_1686655889227"
+      "id": "user_1688801043483",
+      "createdDate": 1688801043483
     }
   ],
   "companies": [
     {
-      "companyName": "softteco",
-      "companyPassword": "softtecopass",
-      "id": "company_1686638383836",
+      "companyName": "resliv",
+      "companyPassword": "reslivpass",
+      "id": "company_1688801043859",
       "members": [
-        "user_1686638383775"
-      ]
-    },
-    {
-      "companyName": "test",
-      "companyPassword": "test123",
-      "id": "company_1686655889374",
-      "members": [
-        "user_1686655889227"
+        "user_1688801043483"
       ]
     }
   ]

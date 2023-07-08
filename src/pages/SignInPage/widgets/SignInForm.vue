@@ -29,7 +29,7 @@
           />
           <div class="rememberCheckbox">
             Remember me
-            <CheckBox />
+            <CheckBox :checked="needRemember" :toggleState="onCheckBoxClick" />
           </div>
         </div>
         <ErrorMessage v-if="isRequestError" />
@@ -88,13 +88,16 @@ export default defineComponent({
               ...response.data,
               loginTime: new Date().getTime(),
             };
-            localStorage.setItem(
-              LOCAL_STORAGE_KEYS.USER_SESSION_KEY,
-              JSON.stringify(userSessionData)
-            );
+            if (this.needRemember) {
+              localStorage.setItem(
+                LOCAL_STORAGE_KEYS.USER_SESSION_KEY,
+                JSON.stringify(userSessionData)
+              );
+            }
+
             console.log("userSessionData", userSessionData);
             this.$store.commit("signInPage/clearFormFields");
-            this.$store.commit("profilePage/setUserData");
+            this.$store.commit("profilePage/setUserData", userSessionData);
             this.$router.push(APP_ROUTERS.DASHBOARD);
           } else {
             console.log("LOGIN ERROR", response.data.error);
@@ -116,11 +119,16 @@ export default defineComponent({
       this.clearErrorsState();
       this.$store.commit("signInPage/setFormValue", { key: "password", value });
     },
+    onCheckBoxClick() {
+      console.log("test", this.needRemember);
+      this.$store.commit("signInPage/toggleRememberState");
+    },
   },
   computed: {
     ...mapGetters({
       username: "signInPage/getUsername",
       password: "signInPage/getPassword",
+      needRemember: "signInPage/getNeedRemember",
     }),
   },
 });

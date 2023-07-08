@@ -1,7 +1,7 @@
-import UserInformation from './UserInformation.vue';
+import AccountDetails from './AccountDetails.vue';
 import ControlsBlock from './ControlsBlock.vue';
 
 export {
-    UserInformation,
+    AccountDetails,
     ControlsBlock
 }

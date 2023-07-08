@@ -3,20 +3,30 @@
 </template>
 
 <script lang="ts">
+import ProfileApi from "@/pages/ProfilePage/api";
 import { defineComponent } from "vue";
 import { APP_ROUTERS, LOCAL_STORAGE_KEYS } from "../constants";
 
 export default defineComponent({
   name: "App",
   mounted() {
-    const userSessionIsActive = localStorage.getItem(
+    const userSessionData = localStorage.getItem(
       LOCAL_STORAGE_KEYS.USER_SESSION_KEY
     );
 
-    if (!userSessionIsActive) {
+    if (!userSessionData) {
       this.$router.push(APP_ROUTERS.SIGN_IN);
     } else {
-      this.$router.push(APP_ROUTERS.DASHBOARD);
+      console.log("TEST", JSON.parse(userSessionData));
+      const userData = JSON.parse(userSessionData);
+      const profileApi = new ProfileApi(userData.companyId, userData.userId);
+
+      if (profileApi.checkToken(userData.loginTime)) {
+        this.$router.push(APP_ROUTERS.DASHBOARD);
+        this.$store.commit("profilePage/setUserData", userData);
+      } else {
+        profileApi.logOut().then(() => this.$router.push(APP_ROUTERS.SIGN_IN));
+      }
     }
   },
 });
@@ -36,6 +46,12 @@ h3 {
   font-family: "Kaushan Script", "Raleway", sans-serif;
   color: #1a1109;
 }
+
+ul,
+ol {
+  list-style-type: none;
+}
+
 .pageContentContainer {
   max-width: 1400px;
   width: 100%;

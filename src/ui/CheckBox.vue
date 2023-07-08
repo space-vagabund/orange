@@ -1,15 +1,22 @@
 <template>
   <label>
-    <input type="checkbox" />
+    <input type="checkbox" :checked="props.checked" @click="toggleState" />
     <span class="checkbox" />
   </label>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script lang="ts" setup>
+import { PropType } from "vue";
 
-export default defineComponent({
-  name: "check-box",
+const props = defineProps({
+  checked: {
+    type: Boolean,
+    required: true,
+  },
+  toggleState: {
+    type: Function as PropType<any>,
+    required: true,
+  },
 });
 </script>
 

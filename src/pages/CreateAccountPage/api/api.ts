@@ -81,6 +81,7 @@ class CreateAccountApi {
             username,
             password: userPassword,
             id: `user_${new Date().getTime()}`,
+            createdDate: new Date().getTime()
         }
         
         const createUserResult = await axios.post(`${this.BASE_URL}${this.END_POINTS.USERS}`, user);

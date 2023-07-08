@@ -14,7 +14,7 @@ import {
 } from '@/pages/ForgotPasswordPage';
 import { 
   ModuleStateType as ProfilePageModuleStateType, 
-  module as ProfilePage 
+  module as profilePage 
 } from '@/pages/ProfilePage';
  
 export interface RootStateType {
@@ -31,6 +31,6 @@ export default createStore<RootStateType>({
     createAccountPage,
     signInPage,
     forgotPasswordPage,
-    ProfilePage
+    profilePage
   }
 })

@@ -16,6 +16,7 @@
     "core-js": "^3.8.3",
     "json-server": "^0.17.3",
     "material-icons": "^1.13.7",
+    "moment": "^2.29.4",
     "vue": "^3.2.13",
     "vue-router": "^4.2.1",
     "vuetify": "^3.3.0",
@@ -40,7 +41,8 @@
   "eslintConfig": {
     "root": true,
     "env": {
-      "node": true
+      "node": true,
+      "vue/setup-compiler-macros": true
     },
     "extends": [
       "plugin:vue/vue3-essential",
